@@ -17,10 +17,18 @@
     </dependency>
   </dependencies>
   <properties>
+    <maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
+    <dev.build.timestamp>${maven.build.timestamp}</dev.build.timestamp>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <build>
+    <resources>
+      <resource>
+	<directory>src/main/resources</directory>
+	<filtering>true</filtering>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
 	<groupId>org.apache.maven.plugins</groupId>
@@ -34,6 +42,28 @@
 	    </goals>
 	  </execution>
 	</executions>
+      </plugin>
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+	<version>2.6</version>
+        <executions>
+          <execution>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>src/main/resources</directory>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
 	<groupId>org.apache.maven.plugins</groupId>
@@ -65,28 +95,14 @@
 	  </execution>
 	</executions>
       </plugin>
-      <plugin>
-	<groupId>org.apache.maven.plugins</groupId>
-	<artifactId>maven-antrun-plugin</artifactId>
-	<version>1.7</version>
-	<executions>
-	  <execution>
-	    <phase>generate-resources</phase>
-	    <goals>
-	      <goal>run</goal>
-	    </goals>
-	    <configuration>
-	      <target>
-		<copy file="${basedir}/src/main/resources/LICENSE.lic" tofile="${basedir}/LICENSE.lic"/>
-		<copy file="${basedir}/src/main/resources/README.md" tofile="${basedir}/README.md"/>
-	      </target>
-	    </configuration>
-	  </execution>
-	</executions>
-      </plugin>
     </plugins>
   </build>
 
   <name>TipScript</name>
   <url>http://maven.apache.org</url>
+  <description>
+TipScript provides quick and easy access to professional looking command line
+and file outputting tools. It is a quick-grab-and-use implementation for a
+variety of purposes.
+  </description>
 </project>
