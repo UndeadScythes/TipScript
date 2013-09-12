@@ -1,6 +1,7 @@
 package com.undeadscythes.tipscript;
 
 import java.io.*;
+import java.util.logging.*;
 
 /**
  * TipScript provides quick and easy access to professional looking command line
@@ -9,29 +10,42 @@ import java.io.*;
  * @author UndeadScythes
  */
 public class TipScript {
+    private static final Handler HANDLER;
+
+    static {
+        HANDLER = new StreamHandler();
+        HANDLER.setFormatter(new TipFormatter());
+    }
+
     private BufferedWriter file;
     private boolean isOpen;
-    private final PrintStream outputStream;
     private final String prompt;
+    private final Logger logger;
 
     /**
      *
-     * @param outputStream
+     * @param logger
      * @param prompt
      */
-    public TipScript(final PrintStream outputStream, final String prompt) {
-        this.outputStream = outputStream;
+    public TipScript(final Logger logger, final String prompt) {
+        this.logger = logger;
+        this.logger.addHandler(HANDLER);
         this.prompt = prompt;
     }
 
     /**
      *
      * @param path
-     * @throws IOException
+     * @return True if the file opened successfully
      */
-    public void openFile(final String path) throws IOException {
-        file = new BufferedWriter(new FileWriter(path));
+    public boolean openFile(final String path) {
         isOpen = true;
+        try {
+            file = new BufferedWriter(new FileWriter(path));
+        } catch (IOException ex) {
+            isOpen = false;
+        }
+        return isOpen;
     }
 
     /**
@@ -47,7 +61,7 @@ public class TipScript {
             file.write(string);
             file.newLine();
         } catch (IOException ex) {
-            outputStream.println(prompt + "I/O Exception.");
+            logger.log(TipLevel.WARNING, "I/O Exception.");
         }
     }
 
@@ -60,33 +74,37 @@ public class TipScript {
             file.close();
             isOpen = false;
         } catch (IOException ex) {
-            outputStream.println(prompt + "I/O Exception.");
+            logger.log(TipLevel.WARNING, "I/O Exception.");
         }
     }
 
     /**
      *
      */
-    public void println() {println("");}
+    public void println() {
+        println("");
+    }
 
     /**
      *
      * @param string
      */
     public void println(final String string) {
-        outputStream.println(prompt + string);
+        print(string + Character.LINE_SEPARATOR);
     }
 
     /**
      *
      */
-    public void print() {print("");}
+    public void print() {
+        print("");
+    }
 
     /**
      *
      * @param line
      */
     public void print(final String line) {
-        outputStream.print(prompt + line);
+        logger.log(TipLevel.OUTPUT, prompt + line);
     }
 }
