@@ -1,0 +1,13 @@
+# Windows detritus #
+
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# NetBeans lint #
+
+nb*
+src/test
+target
