@@ -9,5 +9,8 @@ $RECYCLE.BIN/
 # NetBeans lint #
 
 nb*
+
+# Maven superfluity #
+
 src/test
 target
