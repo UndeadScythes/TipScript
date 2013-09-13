@@ -99,10 +99,18 @@
   </build>
 
   <name>TipScript</name>
-  <url>http://maven.apache.org</url>
   <description>
 TipScript provides quick and easy access to professional looking command line
 and file outputting tools. It is a quick-grab-and-use implementation for a
 variety of purposes.
   </description>
+  <url>https://github.com/UndeadScythes/TipScript</url>
+  <licenses>
+    <license>
+      <name>Creative Commons BY-NC-SA 2.0 UK</name>
+      <url>http://creativecommons.org/licenses/by-nc-sa/2.0/uk/legalcode</url>
+      <distribution>repo</distribution>
+      <comments>Attribution - Non-Commercial - Share-Alike</comments>
+    </license>
+  </licenses>
 </project>
