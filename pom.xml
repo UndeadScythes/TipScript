@@ -90,6 +90,7 @@
 	    </goals>
 	    <configuration>
 	      <excludes>
+		<exclude>com.undeadscythes:TipScript</exclude>
 	      </excludes>
 	    </configuration>
 	  </execution>
