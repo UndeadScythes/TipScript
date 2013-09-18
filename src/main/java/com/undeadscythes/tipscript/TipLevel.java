@@ -14,7 +14,7 @@ public final class TipLevel extends Level {
     private static final long serialVersionUID = 1L;
 
     static {
-        OUTPUT = new TipLevel("OUTPUT", 100);
+        OUTPUT = new TipLevel("OUTPUT", Level.INFO.intValue() + 1);
     }
 
     private TipLevel(final String name, final int value) {

@@ -10,17 +10,17 @@ import java.util.logging.*;
  * @author UndeadScythes
  */
 public class TipScript {
-    private static final Handler HANDLER;
+    private static final Handler CONSOLE_HANDLER;
 
     static {
-        HANDLER = new StreamHandler();
-        HANDLER.setFormatter(new TipFormatter());
+        CONSOLE_HANDLER = new ConsoleHandler();
+        CONSOLE_HANDLER.setFormatter(new TipFormatter());
     }
 
     private BufferedWriter file;
     private boolean isOpen;
     private final String prompt;
-    private final Logger logger;
+    private final Logger console;
 
     /**
      *
@@ -28,8 +28,12 @@ public class TipScript {
      * @param prompt
      */
     public TipScript(final Logger logger, final String prompt) {
-        this.logger = logger;
-        this.logger.addHandler(HANDLER);
+        console = logger;
+        for (final Handler handler : console.getHandlers()) {
+            console.removeHandler(handler);
+        }
+        console.addHandler(CONSOLE_HANDLER);
+        console.setUseParentHandlers(false);
         this.prompt = prompt;
     }
 
@@ -61,7 +65,7 @@ public class TipScript {
             file.write(string);
             file.newLine();
         } catch (IOException ex) {
-            logger.log(TipLevel.WARNING, "I/O Exception.");
+            console.log(TipLevel.WARNING, "I/O Exception.");
         }
     }
 
@@ -74,7 +78,7 @@ public class TipScript {
             file.close();
             isOpen = false;
         } catch (IOException ex) {
-            logger.log(TipLevel.WARNING, "I/O Exception.");
+            console.log(TipLevel.WARNING, "I/O Exception.");
         }
     }
 
@@ -90,7 +94,7 @@ public class TipScript {
      * @param string
      */
     public void println(final String string) {
-        print(string + Character.LINE_SEPARATOR);
+        print(string + "\n");
     }
 
     /**
@@ -105,6 +109,6 @@ public class TipScript {
      * @param line
      */
     public void print(final String line) {
-        logger.log(TipLevel.OUTPUT, prompt + line);
+        console.log(TipLevel.OUTPUT, prompt + line);
     }
 }
