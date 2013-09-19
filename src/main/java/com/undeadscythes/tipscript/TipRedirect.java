@@ -3,14 +3,16 @@ package com.undeadscythes.tipscript;
 import static java.util.logging.Logger.*;
 
 /**
+ * {@link TipRedirect} allows all usual output to be redirected to another
+ * location.
+ *
  * @author UndeadScythes
  */
 public class TipRedirect extends TipScript {
     private final StringBuilder output;
 
     /**
-     *
-     * @param output
+     * Redirect output to the given {@link StringBuilder}.
      */
     public TipRedirect(final StringBuilder output) {
         super(getLogger(TipRedirect.class.getName()), "");
@@ -18,11 +20,11 @@ public class TipRedirect extends TipScript {
     }
 
     /**
-     *
+     * Store all output and retrieve it later using
+     * {@link #getOutput getOutput()}.
      */
     public TipRedirect() {
-        super(getLogger(TipRedirect.class.getName()), "");
-        output = new StringBuilder("");
+        this(new StringBuilder(""));
     }
 
     @Override
@@ -31,8 +33,7 @@ public class TipRedirect extends TipScript {
     }
 
     /**
-     *
-     * @return Output that was delivered to this {@link TipScript}
+     * Get the output that was delivered to this {@link TipScript}.
      */
     public String getOutput() {
         return output.toString();

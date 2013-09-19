@@ -3,6 +3,10 @@ package com.undeadscythes.tipscript;
 import java.util.logging.*;
 
 /**
+ * This {@link Formatter} checks for a log level of
+ * {@link TipLevel#OUTPUT OUTPUT} and will remove all usual {@link Logger}
+ * output text and return the message alone.
+ *
  * @author UndeadScythes
  */
 public class TipFormatter extends Formatter {
