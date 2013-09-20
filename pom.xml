@@ -6,7 +6,7 @@
 
   <groupId>com.undeadscythes</groupId>
   <artifactId>TipScript</artifactId>
-  <version>2.2.4</version>
+  <version>3.0.0-Alpha</version>
   <packaging>jar</packaging>
   <dependencies>
     <dependency>
