@@ -44,7 +44,24 @@ public class TipScript {
     public boolean openFile(final String path) {
         isOpen = true;
         try {
-            file = new BufferedWriter(new FileWriter(path));
+            file = new BufferedWriter(new FileWriter(path));//new OutputStreamWriter(new FileOutputStream(path), "US-ASCII"));
+        } catch (IOException ex) {
+            isOpen = false;
+        }
+        return isOpen;
+    }
+
+    /**
+     * Open a {@link File} at the given path to use as an output source and use
+     * a given encoding. Output can be written to this file using
+     * {@link #printf printf()}.
+     *
+     * @return False if the file could not be opened.
+     */
+    public boolean openFile(final String path, final String encoding) {
+        isOpen = true;
+        try {
+            file = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path), encoding));
         } catch (IOException ex) {
             isOpen = false;
         }
