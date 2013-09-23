@@ -2,7 +2,7 @@ package tipscripttest;
 
 import com.undeadscythes.tipscript.*;
 import java.io.*;
-import static java.util.logging.Logger.*;
+import java.util.logging.*;
 import static org.junit.Assert.*;
 import org.junit.*;
 
@@ -14,7 +14,7 @@ public class TipScriptTest extends Assert {
 
     @Before
     public void init() {
-        tipScript = new TipScript(getLogger("test"), "tip>");
+        tipScript = new TipScript(Logger.getLogger("test"), "tip>");
     }
 
     @Test

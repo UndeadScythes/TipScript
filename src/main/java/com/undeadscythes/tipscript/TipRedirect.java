@@ -1,6 +1,6 @@
 package com.undeadscythes.tipscript;
 
-import static java.util.logging.Logger.*;
+import java.util.logging.*;
 
 /**
  * {@link TipRedirect} allows all usual output to be redirected to another
@@ -15,7 +15,7 @@ public class TipRedirect extends TipScript {
      * Redirect output to the given {@link StringBuilder}.
      */
     public TipRedirect(final StringBuilder output) {
-        super(getLogger(TipRedirect.class.getName()), "");
+        super(Logger.getLogger(TipRedirect.class.getName()), "");
         this.output = output;
     }
 
