@@ -1,4 +1,4 @@
-# TipScript - 3.0.1-Alpha #
+# TipScript - Alpha-3.1-SNAPSHOT #
 
 TipScript provides quick and easy access to professional looking command line
 and file outputting tools. It is a quick-grab-and-use implementation for a
