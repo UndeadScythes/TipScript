@@ -19,7 +19,7 @@ public class TipScriptTest extends Assert {
 
     @Test
     public void testFileCrash() throws IOException {
-        assertFalse("open bad file", tipScript.openFile(""));
+        assertFalse(tipScript.openFile(""));
     }
 
     @Test
@@ -28,7 +28,7 @@ public class TipScriptTest extends Assert {
         tipScript.printf("test");
         tipScript.closeFile();
         final File file = new File("test");
-        assertTrue("file creation", file.exists());
-        assertTrue("file deletion", file.delete());
+        assertTrue(file.exists());
+        assertTrue(file.delete());
     }
 }
