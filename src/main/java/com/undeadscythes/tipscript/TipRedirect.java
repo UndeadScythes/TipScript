@@ -33,9 +33,12 @@ public class TipRedirect extends TipScript {
     }
 
     /**
-     * Get the output that was delivered to this {@link TipScript}.
+     * Get the output that was delivered to this {@link TipScript} and clear the
+     * buffer.
      */
     public String getOutput() {
-        return output.toString();
+        final String result = output.toString();
+        output.delete(0, output.length());
+        return result;
     }
 }
