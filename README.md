@@ -1,4 +1,4 @@
-# TipScript - Beta-1.0 #
+# TipScript - Beta-1.1-SNAPSHOT #
 
 TipScript provides quick and easy access to
 professional looking command line and file outputting tools. It is a
