@@ -6,7 +6,7 @@
 
   <groupId>com.undeadscythes</groupId>
   <artifactId>TipScript</artifactId>
-  <version>Alpha-3.2-SNAPSHOT</version>
+  <version>Beta-1.0</version>
   <packaging>jar</packaging>
   <dependencies>
     <dependency>
@@ -49,6 +49,7 @@
 	  <execution>
 	    <phase>process-sources</phase>
 	    <goals>
+	      <goal>display-plugin-updates</goal>
 	      <goal>display-dependency-updates</goal>
 	    </goals>
 	  </execution>
@@ -79,11 +80,11 @@
     </plugins>
   </build>
 
-  <name>TipScript</name>
-  <description>TipScript provides quick and easy access to professional looking command line
-and file outputting tools. It is a quick-grab-and-use implementation for a
-variety of purposes.</description>
-  <url>https://github.com/UndeadScythes/TipScript</url>
+  <name>${project.artifactId}</name>
+  <description>${project.artifactId} provides quick and easy access to
+professional looking command line and file outputting tools. It is a
+quick-grab-and-use implementation for a variety of purposes.</description>
+  <url>https://github.com/UndeadScythes/${project.artifactId}</url>
   <inceptionYear>2013</inceptionYear>
   <licenses>
     <license>
