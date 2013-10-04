@@ -41,4 +41,11 @@ public class TipRedirect extends TipScript {
         output.delete(0, output.length());
         return result;
     }
+
+    /**
+     * Flush the contents of the string buffer.
+     */
+    public void flush() {
+        output.delete(0, output.length());
+    }
 }
